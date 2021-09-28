@@ -1,0 +1,39 @@
+<mvc:View
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+  xmlns:smartTable="sap.ui.comp.smarttable"
+  xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+  height="100%"
+  controllerName="OData.FlightPlan.controller.TableReport">
+
+  <VBox fitContainer="true">
+	
+    <smartFilterBar:SmartFilterBar id="smartFilterBar" 
+      entitySet="FlightPlanSet">
+      <smartFilterBar:controlConfiguration>
+        <smartFilterBar:ControlConfiguration  
+          key="DepartureAirport" 
+          visibleInAdvancedArea="true" 
+          preventInitialDataFetchInValueHelpDialog="false">
+        </smartFilterBar:ControlConfiguration>
+      </smartFilterBar:controlConfiguration>
+    </smartFilterBar:SmartFilterBar>
+
+    <smartTable:SmartTable id="smartTable"  
+      entitySet="FlightPlanSet" 
+      smartFilterId="smartFilterBar"
+      tableType="Table"
+      useVariantManagement="true"       
+      useTablePersonalisation="true" 
+      header="FlightPlan" showRowCount="true" 
+      enableAutoBinding="true"
+      editTogglable="true"
+      customData:useSmartField="true"
+      fieldChange="onFieldChange">
+      <smartTable:layoutData>
+        <FlexItemData growFactor="1" baseSize="0%"/>
+      </smartTable:layoutData>
+    </smartTable:SmartTable>
+  </VBox>
+</mvc:View>
